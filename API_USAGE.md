@@ -17,10 +17,10 @@ wget https://huggingface.co/Eyeline-Research/FlashDepth/resolve/main/flashdepth/
 
 ```bash
 # Build the Docker image
-docker build -t flashdepth-api .
+docker build -t flashdepth .
 
 # Run the container
-docker run --gpus all -p 8000:8000 -v $(pwd)/configs:/app/configs -v $(pwd)/outputs:/app/outputs flashdepth-api
+docker run --gpus all -p 8000:8000 -v $(pwd)/configs:/app/configs -v $(pwd)/outputs:/app/outputs flashdepth
 ```
 
 ### 3. Using Docker Compose
@@ -208,6 +208,18 @@ The API returns appropriate HTTP status codes:
 - **Input Resolution**: Videos with long side > 2044px are automatically resized
 - **Batch Processing**: Currently supports single video processing per request
 - **Supported Formats**: MP4, AVI, MOV, MKV, WebM
+
+## TODOs & Future Enhancements
+
+### Data Egress to Tigris
+**TODO**: Implement automatic upload of processed results to Tigris storage after inference completion.
+
+This feature should include:
+- Upload depth maps (.npy files) to Tigris bucket
+- Upload output videos to Tigris bucket  
+- Return Tigris URLs in API response
+- Optional cleanup of local files after successful upload
+- Configuration for Tigris credentials and bucket settings
 
 ## Troubleshooting
 
