@@ -1,0 +1,17 @@
+torch==2.7.0
+torchvision==0.22.0  
+xformers==0.0.30
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+pydantic==2.5.0
+numpy
+opencv-python
+pillow
+einops
+scipy
+h5py
+tqdm
+hydra-core
+omegaconf
+flash-attn
